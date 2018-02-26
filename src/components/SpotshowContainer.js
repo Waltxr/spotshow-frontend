@@ -1,31 +1,32 @@
 import React from 'react'
+import { connect }  from 'react-redux';
+import * as actions from '../actions/index';
+import ShowList from './ShowList'
 
 class SpotshowContainer extends React.Component {
 
-
-  componentDidMount() {
-    this.getShowData()
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.currentUser && nextProps.userEvents.length === 0) {
+    const token = localStorage.jwt
+    nextProps.getShowData(token)
+    }
   }
-
-  getShowData = () => {
-    debugger
-    return fetch('http://localhost:3000/api/v1/events', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-    })
-    .then(res => res.json())
-    .then(console.log)
-  }
-
 
   render() {
     return(
-      <div>we in container</div>
+      <div>
+        <ShowList events={this.props.userEvents}/>
+      </div>
     )
   }
+
 }
 
-export default SpotshowContainer
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser,
+  userEvents: state.userEvents
+  };
+};
+
+export default connect(mapStateToProps, actions)(SpotshowContainer);

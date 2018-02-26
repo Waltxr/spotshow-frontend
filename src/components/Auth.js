@@ -1,29 +1,16 @@
 import React from 'react'
+import { connect }  from 'react-redux';
+import * as actions from '../actions/index';
 import SpotshowContainer from './SpotshowContainer'
 
 class Auth extends React.Component {
-
-  loginToSpotify = (code, history) => {
-    return fetch('http://localhost:3000/api/v1/dashboard', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({ code })
-    })
-    .then(res => res.json())
-    .then( currentUser => {
-      localStorage.setItem("jwt", currentUser.code)
-    })
-  }
 
   componentDidMount() {
     const location = this.props.location.search
     const history = this.props.history
     if (location.includes('code')) {
       const code = location.slice(6)
-      this.loginToSpotify(code, history)
+      this.props.loginToSpotify(code, history)
       history.push("/dashboard")
     }
   }
@@ -37,4 +24,4 @@ class Auth extends React.Component {
   }
 }
 
-export default Auth
+export default connect(() => ({}), actions)(Auth);
