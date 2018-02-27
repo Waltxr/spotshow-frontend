@@ -1,12 +1,21 @@
 import React from 'react'
+import { Card, Image } from 'semantic-ui-react'
 
 class ShowCard extends React.Component {
 
   render() {
+    console.log(this.props)
     return(
-      <div>
-        <h4>{this.props.name}</h4>        
-      </div>
+      <Card>
+       <Image src={this.props.image} />
+       <Card.Content>
+         <Card.Header>{this.props.artists}</Card.Header>
+         <Card.Meta>{this.props.date}</Card.Meta>
+         <Card.Description>{this.props.name}</Card.Description>
+         <Card.Description>{this.props.time}</Card.Description>
+         <Card.Description>{this.props.venue.name}</Card.Description>
+       </Card.Content>
+     </Card>
     )
   }
 

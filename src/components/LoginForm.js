@@ -1,15 +1,11 @@
 import React from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
+import { Button, Grid, Header } from 'semantic-ui-react';
 
 
 const LoginForm = () => (
 
   <div className='login-form'>
-    {/*
-      Heads up! The styles below are necessary for the correct render of this example.
-      You can do same with CSS, the main idea is that all the elements up to the `Grid`
-      below must have a height of 100%.
-    */}
+
     <style>{`
       body > div,
       body > div > div,
@@ -23,14 +19,10 @@ const LoginForm = () => (
       verticalAlign='middle'
     >
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as='h4' color='blue' textAlign='center'>
-          {' '}Connect your spotify account to check out what artists you're into are playing soon
+        <Header as='h2' textAlign='center' className="header color">
+          Connect your spotify account to spot some shows in NYC that you might like.
         </Header>
-        <Form size='large'>
-          <Segment stacked>
-          <Button color='blue' fluid size='large' href='http://localhost:3000/api/v1/login'>Connect To Spotify</Button>
-          </Segment>
-        </Form>
+          <Button className="ui color1 button" fluid size='large' href='http://localhost:3000/api/v1/login'>Connect To Spotify</Button>
       </Grid.Column>
     </Grid>
   </div>
@@ -39,9 +31,3 @@ const LoginForm = () => (
 
 
 export default LoginForm
-
-// return (
-//   <div>
-//
-//   </div>
-// )

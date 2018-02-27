@@ -11,7 +11,7 @@ export function loginToSpotify(code, history) {
     .then(res => res.json())
     .then( user => {
       localStorage.setItem("jwt", user.code)
-      dispatch({ type: 'LOGIN_USER', payload: user.currentUser })
+            dispatch({ type: 'LOGIN_USER', payload: user.currentUser })
     })
   }
 }
@@ -28,7 +28,7 @@ export function getShowData(jwt) {
       body: JSON.stringify({ jwt })
     })
     .then(res => res.json())
-    .then( eventsList => {      
+    .then( eventsList => {
       dispatch({ type: 'FETCH_EVENTS', payload: eventsList.userEvents})
     })
   }

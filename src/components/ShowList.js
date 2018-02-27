@@ -1,21 +1,50 @@
 import React from 'react'
 import ShowCard from './ShowCard'
+import { Card } from 'semantic-ui-react'
 
-const ShowList = (props) => {
+class ShowList extends React.Component {
 
-  console.log(props.events)
+  getImageUrl = index => {
+    return this.props.events[index].artists.find((artist) => {
+      if (artist.image_url) {
+        return artist.image_url
+      }
+    })
+  }
 
-  const e = props.events
-  .map((event) => <ShowCard key={event.id} name={event.display_name} date={event.date} time={event.time}/>)
+  listAllArtists = index => {
+    let a = []
+     this.props.events[index].artists.map((artist) => {
+      a.push(artist.name)
+    })
+
+    return a.join(",  ")
+  }
 
 
+  getShow = () => {
+    console.log(this.props.events)
+    return this.props.events.map((event, index) => {
+      return (
+        <ShowCard
+          key={event.id}
+          name={event.display_name}
+          date={event.date}
+          time={event.time}
+          venue={event.venue.name}
+          url={event.uri}
+          artists={this.listAllArtists(index)}
+          image={this.getImageUrl(index).image_url}
+        />
+      )
+    })
+  }
+
+  render() {
     return (
-      <div>
-        {e}
-      </div>
+      <Card.Group>{this.getShow()}</Card.Group>
     )
-
-
+  }
 }
 
 
