@@ -15,6 +15,9 @@ class ShowCard extends React.Component {
          <Card.Description>{this.props.time}</Card.Description>
          <Card.Description>{this.props.venue.name}</Card.Description>
        </Card.Content>
+       <Card.Content extra>
+         <a href={this.props.url} target="_blank">ticket link</a>
+       </Card.Content>
      </Card>
     )
   }

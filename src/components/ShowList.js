@@ -42,7 +42,7 @@ class ShowList extends React.Component {
 
   render() {
     return (
-      <Card.Group>{this.getShow()}</Card.Group>
+      <Card.Group centered itemsPerRow={3}>{this.getShow()}</Card.Group>
     )
   }
 }

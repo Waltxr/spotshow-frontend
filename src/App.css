@@ -36,6 +36,10 @@ html {
   color: #fff;
 }
 
+h1 {
+  color: #fff;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

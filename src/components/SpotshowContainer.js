@@ -22,13 +22,13 @@ class SpotshowContainer extends React.Component {
         <Container>
           <Menu.Item as='a' header>
             <Image
-              size='mini'
-              src='/small.png'
+              size='medium'
+              src='/logo.png'
               style={{ marginRight: '1.5em' }}
             />
           </Menu.Item>
           <Menu.Item>{this.props.currentUser.username}</Menu.Item>
-          <Menu.Item as='a'>Home</Menu.Item>
+          <Menu.Item as='a'>Dashboard</Menu.Item>
 
           <Dropdown item simple text='Dropdown'>
             <Dropdown.Menu>
@@ -50,8 +50,8 @@ class SpotshowContainer extends React.Component {
         </Container>
       </Menu>
 
-      <Container text style={{ marginTop: '7em', color: 'white' }}>
-        <Header as='h1'>Semantic UI React Fixed Template</Header>
+      <Container content style={{ marginTop: '7em', color: 'white' }}>
+        <Header as='h1' style={{ color: 'white' }}>Your Upcoming Shows</Header>
         <ShowList events={this.props.userEvents}/>
       </Container>
 
