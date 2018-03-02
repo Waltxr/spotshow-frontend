@@ -3,6 +3,7 @@ import { connect }  from 'react-redux';
 import * as actions from '../actions/index';
 import ShowList from './ShowList'
 import { Container, Divider, Dropdown, Grid, Header, Image, List, Menu, Segment } from 'semantic-ui-react'
+import LogOut from './LogOut'
 
 
 class SpotshowContainer extends React.Component {
@@ -29,7 +30,9 @@ class SpotshowContainer extends React.Component {
           </Menu.Item>
           <Menu.Item>{this.props.currentUser.username}</Menu.Item>
           <Menu.Item as='a'>Dashboard</Menu.Item>
-
+          <Menu.Item>
+            <LogOut />
+          </Menu.Item>
           <Dropdown item simple text='Dropdown'>
             <Dropdown.Menu>
               <Dropdown.Item>List Item</Dropdown.Item>
@@ -100,7 +103,7 @@ class SpotshowContainer extends React.Component {
           <Divider inverted section />
           <Image
             centered
-            size='mini'
+            size='small'
             src='/logo.png'
           />
           <List horizontal inverted divided link>

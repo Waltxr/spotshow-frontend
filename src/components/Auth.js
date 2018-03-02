@@ -12,6 +12,11 @@ class Auth extends React.Component {
       const code = location.slice(6)
       this.props.loginToSpotify(code, history)
       history.push("/dashboard")
+    } else if (localStorage.length > 0) {
+      const token = localStorage.jwt
+      this.props.getShowData(token)
+    } else {
+      history.push("/")
     }
   }
 
@@ -22,6 +27,7 @@ class Auth extends React.Component {
       </div>
     )
   }
+
 }
 
 export default connect(() => ({}), actions)(Auth);

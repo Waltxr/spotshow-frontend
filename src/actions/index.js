@@ -16,6 +16,13 @@ export function loginToSpotify(code, history) {
   }
 }
 
+export function logOutOfSpotify() {
+  return dispatch => {
+    localStorage.clear()
+    return {}
+  }
+}
+
 export function getShowData(jwt) {
   return (dispatch) => {
     return fetch('http://localhost:3000/api/v1/events', {

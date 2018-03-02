@@ -1,6 +1,6 @@
 import React from 'react'
 import ShowCard from './ShowCard'
-import { Card } from 'semantic-ui-react'
+import { Card, Loader, Dimmer, Segment } from 'semantic-ui-react'
 
 class ShowList extends React.Component {
 
@@ -20,7 +20,6 @@ class ShowList extends React.Component {
 
     return a.join(",  ")
   }
-
 
   getShow = () => {
     console.log(this.props.events)
