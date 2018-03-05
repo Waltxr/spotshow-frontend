@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router';
-import { Button } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import * as actions from '../actions/index';
 import { connect }  from 'react-redux';
 
@@ -13,9 +13,7 @@ class LogOut extends React.Component {
 
  render() {
    return (
-     <div>
-       <Button onClick={this.logOut}>Log Out</Button>
-     </div>
+     <Menu.Item as='a' onClick={this.logOut}>Logout</Menu.Item>
    )
  }
 

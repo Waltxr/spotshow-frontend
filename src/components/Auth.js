@@ -5,7 +5,7 @@ import SpotshowContainer from './SpotshowContainer'
 
 class Auth extends React.Component {
 
-  componentDidMount() {
+  componentDidMount() {        
     const location = this.props.location.search
     const history = this.props.history
     if (location.includes('code')) {

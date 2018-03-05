@@ -2,8 +2,10 @@ import React from 'react'
 import { connect }  from 'react-redux';
 import * as actions from '../actions/index';
 import ShowList from './ShowList'
+import FavoriteVenuesList from './FavoriteVenuesList'
 import { Container, Divider, Dropdown, Grid, Header, Image, List, Menu, Segment } from 'semantic-ui-react'
-import LogOut from './LogOut'
+import Navbar from './Navbar'
+
 
 
 class SpotshowContainer extends React.Component {
@@ -12,47 +14,14 @@ class SpotshowContainer extends React.Component {
     if (nextProps.currentUser && nextProps.userEvents.length === 0) {
     const token = localStorage.jwt
     nextProps.getShowData(token)
+    nextProps.getUserVenueFavorites(token)
     }
   }
 
   render() {
-    console.log(this.props.userEvents)
     return(
       <div>
-      <Menu fixed='top' inverted>
-        <Container>
-          <Menu.Item as='a' header>
-            <Image
-              size='medium'
-              src='/logo.png'
-              style={{ marginRight: '1.5em' }}
-            />
-          </Menu.Item>
-          <Menu.Item>{this.props.currentUser.username}</Menu.Item>
-          <Menu.Item as='a'>Dashboard</Menu.Item>
-          <Menu.Item>
-            <LogOut />
-          </Menu.Item>
-          <Dropdown item simple text='Dropdown'>
-            <Dropdown.Menu>
-              <Dropdown.Item>List Item</Dropdown.Item>
-              <Dropdown.Item>List Item</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Header>Header Item</Dropdown.Header>
-              <Dropdown.Item>
-                <i className='dropdown icon' />
-                <span className='text'>Submenu</span>
-                <Dropdown.Menu>
-                  <Dropdown.Item>List Item</Dropdown.Item>
-                  <Dropdown.Item>List Item</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown.Item>
-              <Dropdown.Item>List Item</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </Container>
-      </Menu>
-
+      <Navbar user={this.props.currentUser.username}/>
       <Container content style={{ marginTop: '7em', color: 'white' }}>
         <Header as='h1' style={{ color: 'white' }}>Your Upcoming Shows</Header>
         <ShowList events={this.props.userEvents}/>
@@ -117,7 +86,6 @@ class SpotshowContainer extends React.Component {
     </div>
     )
   }
-
 }
 
 function mapStateToProps(state) {

@@ -20,7 +20,7 @@ const LoginForm = () => (
     >
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as='h2' textAlign='center' className="header color">
-          Connect your spotify account to spot some shows in NYC that you might like.
+          Connect your spotify account to see what artists are playing in NYC that you actually listen to.
         </Header>
           <Button className="ui color1 button" fluid size='large' href='http://localhost:3000/api/v1/login'>Connect To Spotify</Button>
       </Grid.Column>

@@ -40,3 +40,39 @@ export function getShowData(jwt) {
     })
   }
 }
+
+export function addVenueToFavorites(jwt, user_venue) {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/api/v1/favorite_venues', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Token ${localStorage.getItem('jwt')}`
+      },
+      body: JSON.stringify({ jwt, user_venue })
+    })
+    .then(res => res.json())
+    .then(userWithVenues => {
+      dispatch({ type: 'FETCH_FAVORATE_VENUES', payload: userWithVenues})
+    })
+  }
+}
+
+export function getUserVenueFavorites(jwt) {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/api/v1/get_favorite_venues', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Token ${localStorage.getItem('jwt')}`
+      },
+      body: JSON.stringify({ jwt })
+    })
+    .then(res => res.json())
+    .then(favUserVenues => {      
+      dispatch({ type: 'FETCH_FAVORATE_VENUES', payload: favUserVenues})
+    })
+  }
+}

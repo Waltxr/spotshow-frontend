@@ -21,8 +21,7 @@ class ShowList extends React.Component {
     return a.join(",  ")
   }
 
-  getShow = () => {
-    console.log(this.props.events)
+  getShow = () => {    
     return this.props.events.map((event, index) => {
       return (
         <ShowCard
