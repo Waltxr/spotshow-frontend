@@ -6,15 +6,15 @@ import { connect }  from 'react-redux';
 
 class RemoveVenueButton extends React.Component {
 
-    favoriteVenue = () => {
+    removeVenue = () => {      
       const token = localStorage.jwt
       const venue = this.props.venue
-      this.props.addVenueToFavorites(token, venue)
+      this.props.deleteVenueFromFavorites(token, venue)
     }
 
     render() {
       return(
-        <a onClick={this.favoriteVenue}>Favorite this venue</a>
+        <a onClick={this.removeVenue}>Remove this venue</a>
       )
     }
 

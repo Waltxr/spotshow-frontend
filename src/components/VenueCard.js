@@ -14,9 +14,7 @@ class VenueCard extends React.Component {
     })
   }
 
-  render() {
-    console.log("VenueCard Render")
-    console.log(this.props)
+  render() {    
     return(
       <Card>
         <Card.Content style={{ color: 'black' }}>

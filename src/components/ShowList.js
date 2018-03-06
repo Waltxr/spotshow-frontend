@@ -29,7 +29,7 @@ class ShowList extends React.Component {
           name={event.display_name}
           date={event.date}
           time={event.time}
-          venue={event.venue.name}
+          venue={event.venue}
           url={event.uri}
           artists={this.listAllArtists(index)}
           image={this.getImageUrl(index).image_url}
@@ -43,7 +43,7 @@ class ShowList extends React.Component {
       <Card.Group centered itemsPerRow={3}>{this.getShow()}</Card.Group>
     )
   }
-  
+
 }
 
 

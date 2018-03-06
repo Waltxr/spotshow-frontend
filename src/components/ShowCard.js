@@ -3,9 +3,24 @@ import { Card, Image, Button} from 'semantic-ui-react'
 import * as actions from '../actions/index';
 import AddVenueButton from './AddVenueButton'
 import Time from 'react-time-format'
+import { withRouter } from 'react-router';
+import { connect }  from 'react-redux';
+import RemoveVenueButton from './RemoveVenueButton'
 
 
 class ShowCard extends React.Component {
+
+  addOrRemoveVenueButton = () => {    
+    if (this.props.favoriteVenues.filter((venue) => venue.name === this.props.venue.name).length > 0 ) {
+      return (
+        <RemoveVenueButton venue={this.props.venue}/>
+        )
+    } else {
+      return (
+        <AddVenueButton venue={this.props.venue}/>
+        )
+      }
+    }
 
   render() {
 
@@ -25,7 +40,7 @@ class ShowCard extends React.Component {
        </Card.Content>
        <Card.Content extra>
          <a href={this.props.url} target="_blank">ticket link</a><br></br>
-         <AddVenueButton venue={this.props.venue}/>
+         {this.addOrRemoveVenueButton()}
        </Card.Content>
      </Card>
     )
@@ -33,4 +48,11 @@ class ShowCard extends React.Component {
 
 }
 
-export default ShowCard
+const mapStateToProps = state => {
+  return {
+    currentUser: state.currentUser,
+    favoriteVenues: state.favoriteVenues
+  }
+}
+
+export default withRouter(connect(mapStateToProps, actions)(ShowCard))

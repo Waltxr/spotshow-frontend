@@ -6,7 +6,7 @@ import { connect }  from 'react-redux';
 
 class AddVenueButton extends React.Component {
 
-    favoriteVenue = () => {
+    favoriteVenue = () => {      
       const token = localStorage.jwt
       const venue = this.props.venue
       this.props.addVenueToFavorites(token, venue)
