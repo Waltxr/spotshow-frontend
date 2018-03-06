@@ -21,7 +21,7 @@ class ShowList extends React.Component {
     return a.join(",  ")
   }
 
-  getShow = () => {    
+  getShow = () => {
     return this.props.events.map((event, index) => {
       return (
         <ShowCard
@@ -43,6 +43,7 @@ class ShowList extends React.Component {
       <Card.Group centered itemsPerRow={3}>{this.getShow()}</Card.Group>
     )
   }
+  
 }
 
 

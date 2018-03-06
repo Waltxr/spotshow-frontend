@@ -5,6 +5,7 @@ import ShowList from './ShowList'
 import FavoriteVenuesList from './FavoriteVenuesList'
 import { Container, Divider, Dropdown, Grid, Header, Image, List, Menu, Segment } from 'semantic-ui-react'
 import Navbar from './Navbar'
+import Footer from './Footer'
 
 
 
@@ -21,69 +22,13 @@ class SpotshowContainer extends React.Component {
   render() {
     return(
       <div>
-      <Navbar user={this.props.currentUser.username}/>
-      <Container content style={{ marginTop: '7em', color: 'white' }}>
-        <Header as='h1' style={{ color: 'white' }}>Your Upcoming Shows</Header>
-        <ShowList events={this.props.userEvents}/>
-      </Container>
-
-      <Segment
-        inverted
-        vertical
-        style={{ margin: '5em 0em 0em', padding: '5em 0em' }}
-      >
-        <Container textAlign='center'>
-          <Grid divided inverted stackable>
-            <Grid.Row>
-              <Grid.Column width={3}>
-                <Header inverted as='h4' content='Group 1' />
-                <List link inverted>
-                  <List.Item as='a'>Link One</List.Item>
-                  <List.Item as='a'>Link Two</List.Item>
-                  <List.Item as='a'>Link Three</List.Item>
-                  <List.Item as='a'>Link Four</List.Item>
-                </List>
-              </Grid.Column>
-              <Grid.Column width={3}>
-                <Header inverted as='h4' content='Group 2' />
-                <List link inverted>
-                  <List.Item as='a'>Link One</List.Item>
-                  <List.Item as='a'>Link Two</List.Item>
-                  <List.Item as='a'>Link Three</List.Item>
-                  <List.Item as='a'>Link Four</List.Item>
-                </List>
-              </Grid.Column>
-              <Grid.Column width={3}>
-                <Header inverted as='h4' content='Group 3' />
-                <List link inverted>
-                  <List.Item as='a'>Link One</List.Item>
-                  <List.Item as='a'>Link Two</List.Item>
-                  <List.Item as='a'>Link Three</List.Item>
-                  <List.Item as='a'>Link Four</List.Item>
-                </List>
-              </Grid.Column>
-              <Grid.Column width={3}>
-                <Header inverted as='h4' content='Footer Header' />
-                <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-
-          <Divider inverted section />
-          <Image
-            centered
-            size='small'
-            src='/logo.png'
-          />
-          <List horizontal inverted divided link>
-            <List.Item as='a' href='#'>Site Map</List.Item>
-            <List.Item as='a' href='#'>Contact Us</List.Item>
-            <List.Item as='a' href='#'>Terms and Conditions</List.Item>
-            <List.Item as='a' href='#'>Privacy Policy</List.Item>
-          </List>
+        <Navbar user={this.props.currentUser.username}/>
+        <Container content style={{ marginTop: '7em', color: 'white', minHeight: '50vh' }}>
+          <Header as='h1' style={{ color: 'white' }}>Your Upcoming Shows</Header>
+          <ShowList events={this.props.userEvents}/>
         </Container>
-      </Segment>
-    </div>
+        <Footer />
+      </div>
     )
   }
 }
@@ -91,7 +36,8 @@ class SpotshowContainer extends React.Component {
 function mapStateToProps(state) {
   return {
     currentUser: state.currentUser,
-    userEvents: state.userEvents
+    userEvents: state.userEvents,
+    favUserVenues: state.favUserVenues
   };
 };
 

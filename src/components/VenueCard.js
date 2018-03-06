@@ -1,16 +1,29 @@
 import React from 'react'
-import { Card, Image, Button} from 'semantic-ui-react'
+import { Card, Button} from 'semantic-ui-react'
 import * as actions from '../actions/index';
-import FavoriteVenue from './FavoriteVenue'
-
+import VenueEvent from './VenueEvent'
 
 
 class VenueCard extends React.Component {
 
+  grabVenueEvents = () => {
+    return this.props.events.map((event) => {
+      return (
+        <VenueEvent name={event.display_name} />
+      )
+    })
+  }
+
   render() {
+    console.log("VenueCard Render")
     console.log(this.props)
     return(
-      <div></div>
+      <Card>
+        <Card.Content style={{ color: 'black' }}>
+          {this.props.name}
+          {this.grabVenueEvents()}
+        </Card.Content>
+      </Card>
     )
   }
 

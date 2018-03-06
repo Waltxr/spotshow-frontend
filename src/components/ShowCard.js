@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Image, Button} from 'semantic-ui-react'
 import * as actions from '../actions/index';
-import FavoriteVenue from './FavoriteVenue'
+import AddVenueButton from './AddVenueButton'
 import Time from 'react-time-format'
 
 
@@ -24,8 +24,8 @@ class ShowCard extends React.Component {
          <Card.Description>{this.props.venue.name}</Card.Description>
        </Card.Content>
        <Card.Content extra>
-         <a href={this.props.url} target="_blank">ticket link</a>
-         <FavoriteVenue venue={this.props.venue}/>
+         <a href={this.props.url} target="_blank">ticket link</a><br></br>
+         <AddVenueButton venue={this.props.venue}/>
        </Card.Content>
      </Card>
     )
