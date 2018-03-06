@@ -1,12 +1,16 @@
 import React from 'react'
-import { Container, Divider, Dropdown, Grid, Header, Image, List, Menu, Segment } from 'semantic-ui-react'
+import { Container, Dropdown, Image, Menu } from 'semantic-ui-react'
 import LogOut from './LogOut'
 import { Link } from 'react-router-dom';
+import { connect }  from 'react-redux';
+import * as actions from '../actions/index';
 
 class Navbar extends React.Component {
 
 
   render() {
+    console.log('navbar');
+    console.log(this.props)
     return(
       <Menu fixed='top' inverted>
         <Container>
@@ -17,7 +21,7 @@ class Navbar extends React.Component {
               style={{ marginRight: '1.5em' }}
             />
           </Menu.Item>
-          <Menu.Item>{this.props.user}</Menu.Item>
+          <Menu.Item>{this.props.currentUser.username}</Menu.Item>
           <Menu.Item>
             <Link to="dashboard">Dashboard</Link>
           </Menu.Item>
@@ -49,4 +53,10 @@ class Navbar extends React.Component {
 
 }
 
-export default Navbar
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+export default connect(mapStateToProps, actions)(Navbar)

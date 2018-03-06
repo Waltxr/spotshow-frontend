@@ -1,12 +1,11 @@
 import React from 'react'
 import { withRouter } from 'react-router';
-import { Button } from 'semantic-ui-react';
 import * as actions from '../actions/index';
 import { connect }  from 'react-redux';
 
 class RemoveVenueButton extends React.Component {
 
-    removeVenue = () => {      
+    removeVenue = () => {
       const token = localStorage.jwt
       const venue = this.props.venue
       this.props.deleteVenueFromFavorites(token, venue)
@@ -14,7 +13,7 @@ class RemoveVenueButton extends React.Component {
 
     render() {
       return(
-        <a onClick={this.removeVenue}>Remove this venue</a>
+        <a onClick={this.removeVenue}>Unfavorite {this.props.venue.name}</a>
       )
     }
 

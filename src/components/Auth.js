@@ -5,7 +5,7 @@ import SpotshowContainer from './SpotshowContainer'
 
 class Auth extends React.Component {
 
-  componentDidMount() {        
+  componentDidMount() {
     const location = this.props.location.search
     const history = this.props.history
     if (location.includes('code')) {
@@ -14,7 +14,9 @@ class Auth extends React.Component {
       history.push("/dashboard")
     } else if (localStorage.length > 0) {
       const token = localStorage.jwt
+      this.props.getUser(token)
       this.props.getShowData(token)
+      this.props.getUserVenueFavorites(token)
     } else {
       history.push("/")
     }

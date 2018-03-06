@@ -2,8 +2,7 @@ import React from 'react'
 import { connect }  from 'react-redux';
 import * as actions from '../actions/index';
 import ShowList from './ShowList'
-import FavoriteVenuesList from './FavoriteVenuesList'
-import { Container, Divider, Dropdown, Grid, Header, Image, List, Menu, Segment } from 'semantic-ui-react'
+import { Container, Header } from 'semantic-ui-react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
@@ -12,6 +11,8 @@ import Footer from './Footer'
 class SpotshowContainer extends React.Component {
 
   componentWillReceiveProps(nextProps) {
+    console.log('next props')
+    console.log(nextProps);
     if (nextProps.currentUser && nextProps.userEvents.length === 0) {
     const token = localStorage.jwt
     nextProps.getShowData(token)
@@ -20,9 +21,11 @@ class SpotshowContainer extends React.Component {
   }
 
   render() {
+    console.log('container render')
+    console.log(this.props);
     return(
       <div>
-        <Navbar user={this.props.currentUser.username}/>
+        <Navbar />
         <Container content style={{ marginTop: '7em', color: 'white', minHeight: '50vh' }}>
           <Header as='h1' style={{ color: 'white' }}>Your Upcoming Shows</Header>
           <ShowList events={this.props.userEvents}/>
@@ -37,8 +40,8 @@ function mapStateToProps(state) {
   return {
     currentUser: state.currentUser,
     userEvents: state.userEvents,
-    favUserVenues: state.favUserVenues
-  };
-};
+    favoriteVenues: state.favoriteVenues
+  }
+}
 
 export default connect(mapStateToProps, actions)(SpotshowContainer);

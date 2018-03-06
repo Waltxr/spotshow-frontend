@@ -1,6 +1,5 @@
 import React from 'react'
-import { Card, Button} from 'semantic-ui-react'
-import * as actions from '../actions/index';
+import { Card } from 'semantic-ui-react'
 import VenueEvent from './VenueEvent'
 
 
@@ -14,7 +13,7 @@ class VenueCard extends React.Component {
     })
   }
 
-  render() {    
+  render() {
     return(
       <Card>
         <Card.Content style={{ color: 'black' }}>

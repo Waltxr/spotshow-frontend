@@ -1,6 +1,5 @@
 import React from 'react'
-import { Card, Button, Feed} from 'semantic-ui-react'
-import * as actions from '../actions/index';
+import { Feed} from 'semantic-ui-react'
 
 
 class VenueEvent extends React.Component {

@@ -1,6 +1,5 @@
 import React from 'react'
-import { withRouter } from 'react-router';
-import { Container, Divider, Dropdown, Grid, Header, Image, List, Menu, Segment } from 'semantic-ui-react'
+import { Container, Header } from 'semantic-ui-react'
 import * as actions from '../actions/index';
 import { connect }  from 'react-redux';
 import Navbar from './Navbar'
@@ -9,8 +8,15 @@ import FavoriteVenuesList from './FavoriteVenuesList'
 
 class FavoriteVenue extends React.Component {
 
+  componentDidMount() {    
+    const token = localStorage.jwt
+    this.props.getShowData(token)
+    this.props.getUserVenueFavorites(token)
+  }
 
   render() {
+    console.log('FavVenue');
+    console.log(this.props);
     return (
       <div>
         <Navbar />
@@ -24,7 +30,7 @@ class FavoriteVenue extends React.Component {
   }
 }
 
-function mapStateToProps(state) {  
+function mapStateToProps(state) {
   return {
     currentUser: state.currentUser,
     userEvents: state.userEvents,

@@ -1,6 +1,6 @@
 import React from 'react'
 import ShowCard from './ShowCard'
-import { Card, Loader, Dimmer, Segment } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 
 class ShowList extends React.Component {
 
@@ -21,8 +21,15 @@ class ShowList extends React.Component {
     return a.join(",  ")
   }
 
+  sortByDate = () => {
+    return this.props.events.sort(function(a, b){
+      return new Date(a.date) - new Date(b.date)
+    })
+  }
+
   getShow = () => {
-    return this.props.events.map((event, index) => {
+    return this.sortByDate()
+    .map((event, index) => {
       return (
         <ShowCard
           key={event.id}

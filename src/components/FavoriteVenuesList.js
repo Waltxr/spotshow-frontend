@@ -1,6 +1,6 @@
 import React from 'react'
 import VenueCard from './VenueCard'
-import { Card, Loader, Dimmer, Segment } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 
 
 class FavoriteVenuesList extends React.Component {
