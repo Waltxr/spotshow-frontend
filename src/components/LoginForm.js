@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Grid, Header } from 'semantic-ui-react';
+import { Button, Grid, Header, Menu, Container, Image } from 'semantic-ui-react';
 
 
 const LoginForm = () => (
@@ -13,6 +13,20 @@ const LoginForm = () => (
         height: 100%;
       }
     `}</style>
+
+
+    <Menu fixed='top' inverted>
+      <Container>
+        <Menu.Item header>
+          <Image
+            size='medium'
+            src='/logo.png'
+            style={{ marginRight: '1.5em' }}
+          />
+        </Menu.Item>
+      </Container>
+    </Menu>
+
     <Grid
       textAlign='center'
       style={{ height: '100%' }}

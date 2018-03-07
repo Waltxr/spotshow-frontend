@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Dropdown, Image, Menu } from 'semantic-ui-react'
+import { Container, Image, Menu } from 'semantic-ui-react'
 import LogOut from './LogOut'
 import { Link } from 'react-router-dom';
 import { connect }  from 'react-redux';

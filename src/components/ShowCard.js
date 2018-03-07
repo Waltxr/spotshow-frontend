@@ -23,9 +23,7 @@ class ShowCard extends React.Component {
       }
     }
 
-  render() {
-    console.log("Card Render");
-    console.log(this.props)
+  render() {    
     let time = new Date(this.props.time)
     time.setHours(time.getHours()-6)
 
