@@ -5,14 +5,13 @@ import ShowList from './ShowList'
 import { Container, Header } from 'semantic-ui-react'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import UserInput from './UserInput'
 
 
 
 class SpotshowContainer extends React.Component {
 
   componentWillReceiveProps(nextProps) {
-    console.log('next props')
-    console.log(nextProps);
     if (nextProps.currentUser && nextProps.userEvents.length === 0) {
     const token = localStorage.jwt
     nextProps.getShowData(token)
@@ -20,27 +19,41 @@ class SpotshowContainer extends React.Component {
     }
   }
 
+  handleUserInput = (searchTerm) => {
+    this.props.userSearch(searchTerm)
+  }
+
   render() {
-    console.log('container render')
-    console.log(this.props);
     return(
       <div>
         <Navbar />
         <Container content style={{ marginTop: '7em', color: 'white', minHeight: '50vh' }}>
           <Header as='h1' style={{ color: 'white' }}>Your Upcoming Shows</Header>
-          <ShowList events={this.props.userEvents}/>
+          <UserInput onChange={this.handleUserInput}/>
+          <ShowList events={this.props.userEvents} searchInput={this.props.searchInput}/>
         </Container>
         <Footer />
       </div>
     )
   }
+
 }
 
-function mapStateToProps(state) {
-  return {
-    currentUser: state.currentUser,
-    userEvents: state.userEvents,
-    favoriteVenues: state.favoriteVenues
+function mapStateToProps(state) {    
+  if (state.searchInput.searchInput == "") {
+    return {
+      currentUser: state.currentUser,
+      userEvents: state.userEvents,
+      favoriteVenues: state.favoriteVenues,
+      searchInput: state.searchInput
+    }
+  } else {
+    return {
+      currentUser: state.currentUser,
+      userEvents: state.userEvents.filter(e => e.display_name.includes(state.searchInput)),
+      favoriteVenues: state.favoriteVenues,
+      searchInput: state.searchInput
+    }
   }
 }
 

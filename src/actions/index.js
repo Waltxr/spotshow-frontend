@@ -112,3 +112,7 @@ export function getUserVenueFavorites(jwt) {
     })
   }
 }
+
+export function userSearch(searchTerm) {
+  return { type: 'SEARCH_INPUT', payload: searchTerm }
+}
