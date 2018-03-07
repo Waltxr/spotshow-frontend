@@ -10,7 +10,6 @@ class FavoriteVenuesList extends React.Component {
   }
 
   getVenue = () => {
-    console.log(this.props)
     return this.props.favoriteVenues.map((venue, index) => {
       return (
         <VenueCard
@@ -25,7 +24,7 @@ class FavoriteVenuesList extends React.Component {
 
   render() {
     return(
-      <Card.Group centered itemsPerRow={3}>{this.getVenue()}</Card.Group>
+      <Card.Group centered itemsPerRow={1}>{this.getVenue()}</Card.Group>
     )
   }
 }

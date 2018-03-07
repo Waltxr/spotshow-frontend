@@ -9,7 +9,7 @@ class VenueEvent extends React.Component {
     return(
       <Feed.Event>
         <Feed.Content>
-          <Feed.Summary>
+          <Feed.Summary as="a" href={this.props.venue.uri} target="_blank">
             <Icon name="rocket" />
             {this.props.name}
           </Feed.Summary>

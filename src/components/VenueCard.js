@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Feed } from 'semantic-ui-react'
+import { Card, Feed, Segment } from 'semantic-ui-react'
 import VenueEvent from './VenueEvent'
 import RemoveVenueButton from './RemoveVenueButton'
 
@@ -11,7 +11,7 @@ class VenueCard extends React.Component {
   grabVenueEvents = () => {
     return this.props.events.map((event) => {
       return (
-        <VenueEvent name={event.display_name} />
+        <VenueEvent name={event.display_name} venue={event}/>
       )
     })
   }
@@ -20,15 +20,20 @@ class VenueCard extends React.Component {
     console.log(this.props);
     return(
       <Card>
-        <Card.Content>
-          <Card.Header>
+        <Card.Content >
+          <Card.Header inverted>
             {this.props.name}
           </Card.Header>
         </Card.Content>
         <Card.Content >
-          <Feed>
-            {this.grabVenueEvents()}
-          </Feed>
+            <Segment.Group raise>
+              <Segment >
+                <Feed>
+                  {this.grabVenueEvents()}
+                </Feed>
+              </Segment>
+            </Segment.Group>
+
         </Card.Content>
         <Card.Content extra>
           <RemoveVenueButton venue={this.props.venue}/>
