@@ -11,41 +11,6 @@ class Footer extends React.Component {
         style={{ margin: '5em 0em 0em', padding: '5em 0em' }}
       >
         <Container textAlign='center'>
-          <Grid divided inverted stackable>
-            <Grid.Row>
-              <Grid.Column width={3}>
-                <Header inverted as='h4' content='Group 1' />
-                <List link inverted>
-                  <List.Item as='a'>Link One</List.Item>
-                  <List.Item as='a'>Link Two</List.Item>
-                  <List.Item as='a'>Link Three</List.Item>
-                  <List.Item as='a'>Link Four</List.Item>
-                </List>
-              </Grid.Column>
-              <Grid.Column width={3}>
-                <Header inverted as='h4' content='Group 2' />
-                <List link inverted>
-                  <List.Item as='a'>Link One</List.Item>
-                  <List.Item as='a'>Link Two</List.Item>
-                  <List.Item as='a'>Link Three</List.Item>
-                  <List.Item as='a'>Link Four</List.Item>
-                </List>
-              </Grid.Column>
-              <Grid.Column width={3}>
-                <Header inverted as='h4' content='Group 3' />
-                <List link inverted>
-                  <List.Item as='a'>Link One</List.Item>
-                  <List.Item as='a'>Link Two</List.Item>
-                  <List.Item as='a'>Link Three</List.Item>
-                  <List.Item as='a'>Link Four</List.Item>
-                </List>
-              </Grid.Column>
-              <Grid.Column width={3}>
-                <Header inverted as='h4' content='Footer Header' />
-                <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
 
           <Divider inverted section />
           <Image
@@ -54,10 +19,10 @@ class Footer extends React.Component {
             src='/logo.png'
           />
           <List horizontal inverted divided link>
-            <List.Item as='a' href='#'>Site Map</List.Item>
-            <List.Item as='a' href='#'>Contact Us</List.Item>
-            <List.Item as='a' href='#'>Terms and Conditions</List.Item>
-            <List.Item as='a' href='#'>Privacy Policy</List.Item>
+            <List.Item as='a' href='mailto:me@adamiwalter.com' target='_blank'>Contact Us</List.Item>
+            <List.Item as='a' href='http://www.adamiwalter.com' target='_blank'>Built by Adam I Walter</List.Item>
+            <List.Item as='a' href='https://www.songkick.com/developer' target='_blank'>Songkick API</List.Item>
+            <List.Item as='a' href='https://developer.spotify.com/web-api/' target='_blank'>Spotify API</List.Item>
           </List>
         </Container>
       </Segment>

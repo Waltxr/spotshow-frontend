@@ -8,7 +8,7 @@ import * as actions from '../actions/index';
 class Navbar extends React.Component {
 
 
-  render() {    
+  render() {
     return(
       <Menu fixed='top' inverted>
         <Container>
@@ -27,23 +27,6 @@ class Navbar extends React.Component {
           <Menu.Item as="a">
             <Link to="favorite-venues">Favorite Venues</Link>
           </Menu.Item>
-          <Dropdown item simple text='Dropdown'>
-            <Dropdown.Menu>
-              <Dropdown.Item>List Item</Dropdown.Item>
-              <Dropdown.Item>List Item</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Header>Header Item</Dropdown.Header>
-              <Dropdown.Item>
-                <i className='dropdown icon' />
-                <span className='text'>Submenu</span>
-                <Dropdown.Menu>
-                  <Dropdown.Item>List Item</Dropdown.Item>
-                  <Dropdown.Item>List Item</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown.Item>
-              <Dropdown.Item>List Item</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
         </Container>
       </Menu>
     )

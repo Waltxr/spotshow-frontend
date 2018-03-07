@@ -2,7 +2,7 @@ import React from 'react'
 import { connect }  from 'react-redux';
 import * as actions from '../actions/index';
 import ShowList from './ShowList'
-import { Container, Header } from 'semantic-ui-react'
+import { Container, Header, Segment } from 'semantic-ui-react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import UserInput from './UserInput'
@@ -27,9 +27,11 @@ class SpotshowContainer extends React.Component {
     return(
       <div>
         <Navbar />
-        <Container content style={{ marginTop: '7em', color: 'white', minHeight: '50vh' }}>
-          <Header as='h1' style={{ color: 'white' }}>Your Upcoming Shows</Header>
+        <Container content style={{ marginTop: '8em', color: 'white' }}>
+          <Header floated="left"as='h1'  style={{ color: 'white' }}>Your Upcoming Shows</Header>
           <UserInput onChange={this.handleUserInput}/>
+        </Container>
+        <Container content style={{ marginTop: '3em', color: 'white', minHeight: '75vh' }}>
           <ShowList events={this.props.userEvents} searchInput={this.props.searchInput}/>
         </Container>
         <Footer />
@@ -39,8 +41,8 @@ class SpotshowContainer extends React.Component {
 
 }
 
-function mapStateToProps(state) {    
-  if (state.searchInput.searchInput == "") {
+function mapStateToProps(state) {
+  if (state.searchInput.searchInput === "") {
     return {
       currentUser: state.currentUser,
       userEvents: state.userEvents,

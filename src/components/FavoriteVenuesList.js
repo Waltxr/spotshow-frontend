@@ -10,9 +10,11 @@ class FavoriteVenuesList extends React.Component {
   }
 
   getVenue = () => {
+    console.log(this.props)
     return this.props.favoriteVenues.map((venue, index) => {
       return (
         <VenueCard
+          venue={venue}
           name={venue.name}
           events={this.grabEvents(index)}
         />

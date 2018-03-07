@@ -6,6 +6,7 @@ import { connect }  from 'react-redux';
 class RemoveVenueButton extends React.Component {
 
     removeVenue = () => {
+      console.log(this.props);
       const token = localStorage.jwt
       const venue = this.props.venue
       this.props.deleteVenueFromFavorites(token, venue)

@@ -27,9 +27,7 @@ class ShowList extends React.Component {
     })
   }
 
-  getShow = () => {
-    console.log("getShow")
-    console.log(this.props)
+  getShow = () => {    
     return this.sortByDate()
     .map((event, index) => {
       return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input } from 'semantic-ui-react'
+import { Input, Segment } from 'semantic-ui-react'
 
 class UserInput extends React.Component {
 
@@ -12,10 +12,10 @@ class UserInput extends React.Component {
       <Input
         icon={{ name: 'search', circular: true }}
         placeholder='Search...'
-        onChange={this.onUserInput}
+        onChange={this.onUserInput}        
       />
     )
-  }
+   }
 
 }
 

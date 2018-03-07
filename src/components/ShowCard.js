@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Image} from 'semantic-ui-react'
+import { Card, Image, Icon} from 'semantic-ui-react'
 import * as actions from '../actions/index';
 import AddVenueButton from './AddVenueButton'
 import Time from 'react-time-format'
@@ -11,6 +11,7 @@ import RemoveVenueButton from './RemoveVenueButton'
 class ShowCard extends React.Component {
 
   addOrRemoveVenueButton = () => {
+
     if (this.props.favoriteVenues.filter((venue) => venue.name === this.props.venue.name).length > 0 ) {
       return (
         <RemoveVenueButton venue={this.props.venue}/>
@@ -23,7 +24,8 @@ class ShowCard extends React.Component {
     }
 
   render() {
-
+    console.log("Card Render");
+    console.log(this.props)
     let time = new Date(this.props.time)
     time.setHours(time.getHours()-6)
 
@@ -53,6 +55,7 @@ class ShowCard extends React.Component {
        <Card.Description>{this.props.name}</Card.Description>
        </Card.Content>
        <Card.Content extra>
+         <Icon name='ticket' />
          <a href={this.props.url} target="_blank">ticket link</a><br></br>
          {this.addOrRemoveVenueButton()}
        </Card.Content>

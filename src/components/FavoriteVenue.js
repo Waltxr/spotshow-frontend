@@ -24,7 +24,7 @@ class FavoriteVenue extends React.Component {
     return (
       <div>
         <Navbar />
-        <Container content style={{ marginTop: '7em', color: 'white', minHeight: '50vh'}}>
+        <Container content style={{ marginTop: '7em', color: 'white', minHeight: '75vh'}}>
           <Header as='h1' style={{ color: 'white' }}>Your Favorite Venues</Header>
           <FavoriteVenuesList events={this.props.userEvents} favoriteVenues={this.props.favoriteVenues}/>
         </Container>
