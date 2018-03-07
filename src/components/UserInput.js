@@ -3,14 +3,14 @@ import { Input } from 'semantic-ui-react'
 
 class UserInput extends React.Component {
 
-  onUserInput = (e) => {    
+  onUserInput = (e) => {
     this.props.onChange(e.target.value)
   }
 
   render() {
     return(
       <Input
-        icon={{ name: 'search', circular: true, link: true }}
+        icon={{ name: 'search', circular: true }}
         placeholder='Search...'
         onChange={this.onUserInput}
       />
