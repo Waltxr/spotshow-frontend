@@ -8,10 +8,14 @@ import FavoriteVenuesList from './FavoriteVenuesList'
 
 class FavoriteVenue extends React.Component {
 
-  componentDidMount() {    
-    const token = localStorage.jwt
-    this.props.getShowData(token)
-    this.props.getUserVenueFavorites(token)
+  componentDidMount() {
+    if (localStorage.length > 0) {
+      const token = localStorage.jwt
+      this.props.getUser(token)
+      this.props.getShowData(token)
+      this.props.getUserVenueFavorites(token)
+    } else
+    this.props.history.push("/")
   }
 
   render() {

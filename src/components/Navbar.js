@@ -14,19 +14,19 @@ class Navbar extends React.Component {
     return(
       <Menu fixed='top' inverted>
         <Container>
-          <Menu.Item as='a' header>
+          <Menu.Item header>
             <Image
               size='medium'
               src='/logo.png'
               style={{ marginRight: '1.5em' }}
             />
           </Menu.Item>
-          <Menu.Item>{this.props.currentUser.username}</Menu.Item>
-          <Menu.Item>
+          <Menu.Item >{this.props.currentUser.username}</Menu.Item>
+          <LogOut />
+          <Menu.Item as="a">
             <Link to="dashboard">Dashboard</Link>
           </Menu.Item>
-          <LogOut />
-          <Menu.Item>
+          <Menu.Item as="a">
             <Link to="favorite-venues">Favorite Venues</Link>
           </Menu.Item>
           <Dropdown item simple text='Dropdown'>
