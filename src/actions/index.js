@@ -53,8 +53,8 @@ export function getShowData(jwt) {
       body: JSON.stringify({ jwt })
     })
     .then(res => res.json())
-    .then( eventsList => {
-      dispatch({ type: 'FETCH_EVENTS', payload: eventsList.userEvents})
+    .then( json => {
+      dispatch({ type: 'FETCH_EVENTS', payload: json.data })
     })
   }
 }

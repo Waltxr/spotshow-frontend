@@ -23,12 +23,11 @@ class ShowCard extends React.Component {
       }
     }
 
-  render() {    
+  render() {
     let time = new Date(this.props.time)
     time.setHours(time.getHours()-6)
 
     let date = new Date(this.props.date)
-
     return(
       <Card>
        <Image src={this.props.image} />
