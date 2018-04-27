@@ -52,7 +52,7 @@ function mapStateToProps(state) {
   } else {
     return {
       currentUser: state.currentUser,
-      userEvents: state.userEvents.filter(e => e.display_name.includes(state.searchInput)),
+      userEvents: state.userEvents.filter(e => e.attributes['display-name'].includes(state.searchInput)),
       favoriteVenues: state.favoriteVenues,
       searchInput: state.searchInput
     }
