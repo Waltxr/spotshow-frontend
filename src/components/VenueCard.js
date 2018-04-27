@@ -11,13 +11,12 @@ class VenueCard extends React.Component {
   grabVenueEvents = () => {
     return this.props.events.map((event) => {
       return (
-        <VenueEvent name={event.display_name} venue={event}/>
+        <VenueEvent name={event.attributes['display-name']} event={event}/>
       )
     })
   }
 
   render() {
-    console.log(this.props);
     return(
       <Card>
         <Card.Content >

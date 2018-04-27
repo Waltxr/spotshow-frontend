@@ -15,7 +15,7 @@ class SpotshowContainer extends React.Component {
     if (nextProps.currentUser && nextProps.userEvents.length === 0) {
     const token = localStorage.jwt
     nextProps.getShowData(token)
-    // nextProps.getUserVenueFavorites(token)
+    nextProps.getUserVenueFavorites(token)
     }
   }
 
