@@ -5,7 +5,7 @@ import { Card } from 'semantic-ui-react'
 class ShowList extends React.Component {
 
   getImageUrl = index => {    
-    return this.props.events[index].attributes.artists.find((artist) => {
+    return this.props.events[index].artists.find((artist) => {
       if (artist.image_url) {
         return artist.image_url
       }
@@ -14,7 +14,7 @@ class ShowList extends React.Component {
 
   listAllArtists = index => {
     let a = []
-     this.props.events[index].attributes.artists.map((artist) => {
+     this.props.events[index].artists.map((artist) => {
       a.push(artist.name)
     })
 
@@ -23,7 +23,7 @@ class ShowList extends React.Component {
 
   sortByDate = () => {
     return this.props.events.sort(function(a, b){
-      return new Date(a.attributes.date) - new Date(b.attributes.date)
+      return new Date(a.date) - new Date(b.date)
     })
   }
 
@@ -33,11 +33,11 @@ class ShowList extends React.Component {
       return (
         <ShowCard
           key={event.id}
-          name={event.attributes['display-name']}
-          date={event.attributes.date}
-          time={event.attributes.time}
-          venue={event.attributes.venue}
-          url={event.attributes.uri}
+          name={event['display-name']}
+          date={event.date}
+          time={event.time}
+          venue={event.venue}
+          url={event.uri}
           artists={this.listAllArtists(index)}
           image={this.getImageUrl(index).image_url}
         />
