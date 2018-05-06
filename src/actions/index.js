@@ -41,7 +41,7 @@ export function getUser(jwt) {
   }
 }
 
-export function getShowData(jwt) {
+export function getUserData(jwt) {
   return (dispatch) => {
     return fetch('http://localhost:3000/api/v1/events', {
       method: 'POST',
@@ -54,8 +54,9 @@ export function getShowData(jwt) {
     })
     .then(res => res.json())
     .then( json => {
-      dispatch({ type: 'FETCH_EVENTS', payload: json.data })
+      dispatch({ type: 'FETCH_EVENTS', payload: json.events })
     })
+
   }
 }
 
@@ -79,7 +80,7 @@ export function addVenueToFavorites(jwt, user_venue) {
 
 export function deleteVenueFromFavorites(jwt, user_venue) {
   return (dispatch) => {
-    return fetch('http://localhost:3000/api/v1/favorite_venues/' + `${user_venue.id}`, {
+    return fetch('http://localhost:3000/api/v1/favorite_venues/' + user_venue.id, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -95,23 +96,23 @@ export function deleteVenueFromFavorites(jwt, user_venue) {
   }
 }
 
-export function getUserVenueFavorites(jwt) {
-  return (dispatch) => {
-    return fetch('http://localhost:3000/api/v1/get_favorite_venues', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Token ${localStorage.getItem('jwt')}`
-      },
-      body: JSON.stringify({ jwt })
-    })
-    .then(res => res.json())
-    .then(favUserVenues => {
-      dispatch({ type: 'FETCH_FAVORATE_VENUES', payload: favUserVenues})
-    })
-  }
-}
+// export function getUserVenueFavorites(jwt) {
+//   return (dispatch) => {
+//     return fetch('http://localhost:3000/api/v1/get_favorite_venues', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'Accept': 'application/json',
+//         'Authorization': `Token ${localStorage.getItem('jwt')}`
+//       },
+//       body: JSON.stringify({ jwt })
+//     })
+//     .then(res => res.json())
+//     .then(favUserVenues => {
+//       dispatch({ type: 'FETCH_FAVORATE_VENUES', payload: favUserVenues})
+//     })
+//   }
+// }
 
 export function userSearch(searchTerm) {
   return { type: 'SEARCH_INPUT', payload: searchTerm }

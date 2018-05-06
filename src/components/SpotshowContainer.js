@@ -14,8 +14,7 @@ class SpotshowContainer extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser && nextProps.userEvents.length === 0) {
     const token = localStorage.jwt
-    nextProps.getShowData(token)
-    nextProps.getUserVenueFavorites(token)
+    nextProps.getUserData(token)
     }
   }
 
@@ -42,6 +41,7 @@ class SpotshowContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state);
   if (state.searchInput.searchInput === "") {
     return {
       currentUser: state.currentUser,
@@ -52,7 +52,7 @@ function mapStateToProps(state) {
   } else {
     return {
       currentUser: state.currentUser,
-      userEvents: state.userEvents.filter(e => e.attributes['display-name'].includes(state.searchInput)),
+      userEvents: state.userEvents.filter(e => e.display_name.includes(state.searchInput)),
       favoriteVenues: state.favoriteVenues,
       searchInput: state.searchInput
     }
