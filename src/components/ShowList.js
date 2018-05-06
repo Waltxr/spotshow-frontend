@@ -4,7 +4,7 @@ import { Card } from 'semantic-ui-react'
 
 class ShowList extends React.Component {
 
-  getImageUrl = index => {    
+  getImageUrl = index => {
     return this.props.events[index].artists.find((artist) => {
       if (artist.image_url) {
         return artist.image_url

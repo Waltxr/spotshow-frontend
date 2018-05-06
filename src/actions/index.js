@@ -52,10 +52,11 @@ export function getUserData(jwt) {
       },
       body: JSON.stringify({ jwt })
     })
-    .then(res => res.json())    
+    .then(res => res.json())
     .then( json => {
       dispatch({ type: 'FETCH_EVENTS', payload: json.events })
     })
+
   }
 }
 
@@ -79,7 +80,7 @@ export function addVenueToFavorites(jwt, user_venue) {
 
 export function deleteVenueFromFavorites(jwt, user_venue) {
   return (dispatch) => {
-    return fetch('http://localhost:3000/api/v1/favorite_venues/' + `${user_venue.id}`, {
+    return fetch('http://localhost:3000/api/v1/favorite_venues/' + user_venue.id, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

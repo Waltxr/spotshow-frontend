@@ -14,7 +14,8 @@ class Auth extends React.Component {
       history.push("/dashboard")
     } else if (localStorage.length > 0) {
       const token = localStorage.jwt
-      this.props.getUserData(token)            
+      this.props.getUser(token)
+      this.props.getUserData(token)
     } else {
       history.push("/")
     }
