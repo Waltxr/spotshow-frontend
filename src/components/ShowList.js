@@ -1,6 +1,9 @@
 import React from 'react'
 import ShowCard from './ShowCard'
+import { connect }  from 'react-redux';
+import * as actions from '../actions/index';
 import { Card } from 'semantic-ui-react'
+import { Dimmer, Loader, } from 'semantic-ui-react'
 
 class ShowList extends React.Component {
 
@@ -46,12 +49,24 @@ class ShowList extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
-      <Card.Group centered itemsPerRow={3}>{this.getShow()}</Card.Group>
+      <div>
+        <Dimmer active={this.props.dimmerActive}>
+          <Loader indeterminate>Finding some shows for you...</Loader>
+        </Dimmer>
+        <Card.Group centered itemsPerRow={3}>{this.getShow()}</Card.Group>
+      </div>
     )
   }
 
 }
 
+function mapStateToProps(state) {
+  return {
+    dimmerActive: state.dimmerActive
+  }
+}
 
-export default ShowList
+
+export default connect(mapStateToProps, actions)(ShowList);

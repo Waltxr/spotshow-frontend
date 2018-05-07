@@ -41,7 +41,6 @@ class SpotshowContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   if (state.searchInput.searchInput === "") {
     return {
       currentUser: state.currentUser,

@@ -11,6 +11,7 @@ export function loginToSpotify(code, history) {
     .then(res => res.json())
     .then( user => {
       localStorage.setItem("jwt", user.code)
+         localStorage.setItem("job_id", user.job_id)
             dispatch({ type: 'LOGIN_USER', payload: user.currentUser })
     })
   }
@@ -113,6 +114,26 @@ export function deleteVenueFromFavorites(jwt, user_venue) {
 //     })
 //   }
 // }
+
+export function jobStatus(jwt, id) {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/api/v1/background_jobs/3' , {
+      method: 'SHOW',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Token ${localStorage.getItem('jwt')}`
+      }
+    })
+    .then(res => res.json())
+    .then(console.log)
+    // .then( user => {
+    //   localStorage.setItem("jwt", user.code)
+    //      localStorage.setItem("job_id", user.job_id)
+    //         dispatch({ type: 'LOGIN_USER', payload: user.currentUser })
+    // })
+  }
+}
 
 export function userSearch(searchTerm) {
   return { type: 'SEARCH_INPUT', payload: searchTerm }
