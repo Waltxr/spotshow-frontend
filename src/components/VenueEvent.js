@@ -4,8 +4,7 @@ import { Feed, Icon } from 'semantic-ui-react'
 
 class VenueEvent extends React.Component {
 
-  render() {
-    console.log(this.props);
+  render() {    
     return(
       <Feed.Event>
         <Feed.Content>

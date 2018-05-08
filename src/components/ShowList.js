@@ -7,21 +7,25 @@ import { Dimmer, Loader, } from 'semantic-ui-react'
 
 class ShowList extends React.Component {
 
+  // componentDidMount(nextProps, nextState) {
+  //   setInterval(this.props.toggleLoading(), 5000)
+    // if (nextProps.events > 25) {
+    //   nextProps.toggleLoading()
+    // }
+  // }
+
   getImageUrl = index => {
     return this.props.events[index].artists.find((artist) => {
       if (artist.image_url) {
         return artist.image_url
+      } else {
+        return 'https://i.imgur.com/ZJh9jUz.png'
       }
     })
   }
 
   listAllArtists = index => {
-    let a = []
-     this.props.events[index].artists.map((artist) => {
-      a.push(artist.name)
-    })
-
-    return a.join(",  ")
+     return this.props.events[index].artists.map((artist) => artist.name)
   }
 
   sortByDate = () => {
@@ -35,13 +39,13 @@ class ShowList extends React.Component {
     .map((event, index) => {
       return (
         <ShowCard
-          key={event.id}
+          key={index}
           name={event['display-name']}
           date={event.date}
           time={event.time}
           venue={event.venue}
           url={event.uri}
-          artists={this.listAllArtists(index)}
+          artists={this.listAllArtists(index).join(", ")}
           image={this.getImageUrl(index).image_url}
         />
       )
@@ -49,10 +53,9 @@ class ShowList extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
-        <Dimmer active={this.props.dimmerActive}>
+        <Dimmer active={this.props.dimmerActive.dimmerActive}>
           <Loader indeterminate>Finding some shows for you...</Loader>
         </Dimmer>
         <Card.Group centered itemsPerRow={3}>{this.getShow()}</Card.Group>
@@ -64,7 +67,8 @@ class ShowList extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    dimmerActive: state.dimmerActive
+    dimmerActive: state.dimmerActive,
+    backgroundJobStatus: state.backgroundJobStatus
   }
 }
 

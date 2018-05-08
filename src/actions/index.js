@@ -57,7 +57,6 @@ export function getUserData(jwt) {
     .then( json => {
       dispatch({ type: 'FETCH_EVENTS', payload: json.events })
     })
-
   }
 }
 
@@ -115,26 +114,47 @@ export function deleteVenueFromFavorites(jwt, user_venue) {
 //   }
 // }
 
-export function jobStatus(jwt, id) {
-  return (dispatch) => {
-    return fetch('http://localhost:3000/api/v1/background_jobs/3' , {
-      method: 'SHOW',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Token ${localStorage.getItem('jwt')}`
-      }
-    })
-    .then(res => res.json())
-    .then(console.log)
+// export function jobStatus(jwt, id) {
+//   return (dispatch) => {
+//     return fetch('http://localhost:3000/api/v1/background_jobs/3' , {
+//       method: 'SHOW',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'Accept': 'application/json',
+//         'Authorization': `Token ${localStorage.getItem('jwt')}`
+//       }
+//     })
+//     .then(res => res.json())
     // .then( user => {
     //   localStorage.setItem("jwt", user.code)
     //      localStorage.setItem("job_id", user.job_id)
     //         dispatch({ type: 'LOGIN_USER', payload: user.currentUser })
     // })
+  // }
+// }
+
+export function toggleLoading() {
+  return (dispatch) => {
+    dispatch({ type: 'TOGGLE_EVENTS_LOADER' })
   }
 }
 
 export function userSearch(searchTerm) {
   return { type: 'SEARCH_INPUT', payload: searchTerm }
+}
+
+export function jobStatus(jwt, id) {
+  return (dispatch) => {
+    return fetch(`http://localhost:3000/api/v1/background_jobs/${id}` , {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+    .then(res => res.json())
+    .then(json => {
+      dispatch({ type: 'BACKGROUND_JOB_STATUS', payload: json.status})
+    })
+  }
 }

@@ -5,7 +5,7 @@ import { Card } from 'semantic-ui-react'
 
 class FavoriteVenuesList extends React.Component {
 
-  grabEvents = index => {    
+  grabEvents = index => {
     return this.props.events.filter(event => event.attributes.venue.name === this.props.favoriteVenues[index].name)
   }
 
@@ -13,6 +13,7 @@ class FavoriteVenuesList extends React.Component {
     return this.props.favoriteVenues.map((venue, index) => {
       return (
         <VenueCard
+          key={index}
           venue={venue}
           name={venue.name}
           events={this.grabEvents(index)}

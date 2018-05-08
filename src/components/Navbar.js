@@ -8,8 +8,7 @@ import * as actions from '../actions/index';
 class Navbar extends React.Component {
 
 
-  render() {
-    console.log(this.props);
+  render() {    
     return(
       <Menu fixed='top' inverted>
         <Container>

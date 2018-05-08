@@ -15,6 +15,12 @@ class SpotshowContainer extends React.Component {
     if (nextProps.currentUser && nextProps.userEvents.length === 0) {
     const token = localStorage.jwt
     nextProps.getUserData(token)
+    const job_id = localStorage.job_id
+    nextProps.jobStatus(token, job_id)
+    setTimeout(() => {
+        nextProps.toggleLoading()
+    }, 3000)
+
     }
   }
 
@@ -23,6 +29,7 @@ class SpotshowContainer extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return(
       <div>
         <Navbar />
@@ -46,14 +53,16 @@ function mapStateToProps(state) {
       currentUser: state.currentUser,
       userEvents: state.userEvents,
       favoriteVenues: state.favoriteVenues,
-      searchInput: state.searchInput
+      searchInput: state.searchInput,
+      backgroundJobStatus: state.backgroundJobStatus
     }
   } else {
     return {
       currentUser: state.currentUser,
       userEvents: state.userEvents.filter(e => e.display_name.includes(state.searchInput)),
       favoriteVenues: state.favoriteVenues,
-      searchInput: state.searchInput
+      searchInput: state.searchInput,
+      backgroundJobStatus: state.backgroundJobStatus
     }
   }
 }
