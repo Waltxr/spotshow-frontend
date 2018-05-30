@@ -1,3 +1,4 @@
+
 export function loginToSpotify(code, history) {
   return (dispatch) => {
     return fetch('http://localhost:3000/api/v1/dashboard', {
@@ -43,6 +44,7 @@ export function getUser(jwt) {
 }
 
 export function getUserData(jwt) {
+  console.log("in getUserData");
   return (dispatch) => {
     return fetch('http://localhost:3000/api/v1/events', {
       method: 'POST',
@@ -143,9 +145,10 @@ export function userSearch(searchTerm) {
   return { type: 'SEARCH_INPUT', payload: searchTerm }
 }
 
-export function jobStatus(jwt, id) {
+export function jobStatus(token, job_id) {
+  console.log("in the jobStatus action");
   return (dispatch) => {
-    return fetch(`http://localhost:3000/api/v1/background_jobs/${id}` , {
+    return fetch(`http://localhost:3000/api/v1/background_jobs/${job_id}` , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

@@ -5,10 +5,7 @@ const initialState = {
 export function dimmerReducer(state = initialState, action) {
   switch (action.type) {
     case 'TOGGLE_EVENTS_LOADER' :
-      return {
-            ...state,
-            dimmerActive: !state.dimmerActive
-          }
+      return { dimmerActive: false }
       default:
         return state
   }

@@ -18,7 +18,7 @@ class FavoriteVenue extends React.Component {
     this.props.history.push("/")
   }
 
-  render() {    
+  render() {
     return (
       <div>
         <Navbar />
