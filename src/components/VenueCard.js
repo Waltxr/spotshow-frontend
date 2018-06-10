@@ -8,10 +8,10 @@ class VenueCard extends React.Component {
 
 
 
-  grabVenueEvents = () => {
-    return this.props.events.map((event, index) => {
+  grabVenueEvents = () => {    
+    return this.props.events.map((event) => {
       return (
-        <VenueEvent name={event.attributes['display-name']} key={index} event={event}/>
+        <VenueEvent event={event} key={event.id} />
       )
     })
   }

@@ -12,7 +12,7 @@ class FavoriteVenue extends React.Component {
     if (localStorage.length > 0) {
       const token = localStorage.jwt
       this.props.getUser(token)
-      this.props.getShowData(token)
+      // this.props.getShowData(token)
       this.props.getUserVenueFavorites(token)
     } else
     this.props.history.push("/")
